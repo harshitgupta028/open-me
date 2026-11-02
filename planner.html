@@ -595,6 +595,462 @@
         .modal-button {
             margin-top: 0;
         }
+
+        /* =========================
+   MEMORIES FLOATING BUTTON
+========================= */
+
+        /* =========================
+   FLOATING MEMORIES BUTTON
+========================= */
+
+        .memories-fab {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            z-index: 10000;
+
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 14px 23px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+
+            background: linear-gradient(135deg,
+                    #ff5f91,
+                    #ff8eb3,
+                    #a18cd1);
+
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px rgba(255, 79, 129, 0.35),
+                0 0 0 0 rgba(255, 118, 156, 0.4);
+
+            animation:
+                surpriseFloat 3s ease-in-out infinite,
+                surpriseGlow 2.5s ease-out infinite;
+
+            transition: transform 0.3s ease;
+        }
+
+        /* Gentle floating */
+
+        @keyframes surpriseFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* Soft glowing pulse */
+
+        @keyframes surpriseGlow {
+            0% {
+                box-shadow:
+                    0 8px 25px rgba(255, 79, 129, 0.35),
+                    0 0 0 0 rgba(255, 118, 156, 0.4);
+            }
+
+            70% {
+                box-shadow:
+                    0 8px 25px rgba(255, 79, 129, 0.35),
+                    0 0 0 12px rgba(255, 118, 156, 0);
+            }
+
+            100% {
+                box-shadow:
+                    0 8px 25px rgba(255, 79, 129, 0.35),
+                    0 0 0 0 rgba(255, 118, 156, 0);
+            }
+        }
+
+        /* Camera animation */
+
+        .memories-icon {
+            display: inline-block;
+            font-size: 19px;
+            animation: cameraBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes cameraBounce {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-12deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            75% {
+                transform: rotate(-5deg);
+            }
+        }
+
+        .memories-sparkle {
+            display: inline-block;
+            animation: sparkleRotate 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleRotate {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.3) rotate(20deg);
+            }
+        }
+
+        /* Hover interaction */
+
+        .memories-fab:hover {
+            animation: none;
+            transform: translateY(-4px) scale(1.06);
+
+            box-shadow:
+                0 12px 35px rgba(255, 79, 129, 0.5);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 768px) {
+            .memories-fab {
+                top: 15px;
+                right: 15px;
+                padding: 12px 17px;
+                font-size: 13px;
+                gap: 7px;
+            }
+
+            .memories-icon {
+                font-size: 17px;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .memories-fab,
+            .memories-icon,
+            .memories-sparkle {
+                animation: none;
+            }
+        }
+
+        /* =========================
+   SCRAPBOOK OVERLAY
+========================= */
+
+        .scrapbook-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 10001;
+
+            background: rgba(35, 20, 35, 0.75);
+            backdrop-filter: blur(10px);
+
+            display: none;
+            overflow-y: auto;
+            padding: 30px 15px;
+        }
+
+        .scrapbook-overlay.show {
+            display: block;
+        }
+
+        .scrapbook-container {
+            position: relative;
+            max-width: 1050px;
+            min-height: 90vh;
+            margin: auto;
+
+            padding: 30px 35px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(#e9d9c7 0.8px, transparent 0.8px),
+                #fff8ee;
+
+            background-size: 18px 18px;
+
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
+        }
+
+        .scrapbook-close {
+            position: absolute;
+            top: 20px;
+            right: 22px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #ffe1ec;
+            color: #ff4f81;
+
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .scrapbook-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .scrapbook-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .scrapbook-heading h1 {
+            color: #ff4f81;
+            font-size: 2.3em;
+            margin-bottom: 12px;
+        }
+
+        .scrapbook-heading p {
+            color: #777;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+
+        .scrapbook-heading span {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 30px;
+            background: #ffe4ed;
+            color: #e85b87;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        /* =========================
+   POLAROID GRID
+========================= */
+
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 45px 30px;
+            padding: 15px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 22px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            position: relative;
+        }
+
+        .polaroid:nth-child(odd) {
+            transform: rotate(-3deg);
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.07);
+            z-index: 2;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            color: #555;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95em;
+            font-style: italic;
+            margin-top: 17px;
+        }
+
+        /* Decorative tape */
+
+        .polaroid::before {
+            content: "";
+            position: absolute;
+            width: 65px;
+            height: 20px;
+            background: rgba(255, 190, 205, 0.65);
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            z-index: 3;
+        }
+
+        /* =========================
+   PHOTO LIGHTBOX
+========================= */
+
+        .photo-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10002;
+
+            background: rgba(0, 0, 0, 0.9);
+
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        .photo-lightbox.show {
+            display: flex;
+        }
+
+        .photo-lightbox img {
+            max-width: 90%;
+            max-height: 75vh;
+            object-fit: contain;
+
+            padding: 12px 12px 45px;
+            background: white;
+
+            border-radius: 3px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .photo-lightbox p {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+
+            border: none;
+            background: transparent;
+            color: white;
+
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        .scrapbook-footer {
+            text-align: center;
+            color: #c17b91;
+            margin-top: 25px;
+            font-style: italic;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .scrapbook-container {
+                padding: 65px 18px 35px;
+            }
+
+            .scrapbook-heading h1 {
+                font-size: 1.7em;
+            }
+
+            .polaroid-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 30px 15px;
+                padding: 5px;
+            }
+
+            .polaroid {
+                padding: 8px 8px 15px;
+            }
+
+            .polaroid img {
+                height: 160px;
+            }
+
+            .polaroid-caption {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .polaroid-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .polaroid img {
+                height: 260px;
+            }
+        }
+
+        .video-preview {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            background: #f5dce7;
+        }
+
+        .video-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255, 79, 129, 0.85);
+            color: white;
+            font-size: 22px;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -698,6 +1154,60 @@
             </button>
 
         </div>
+
+    </div>
+
+    <!-- FLOATING MEMORIES BUTTON -->
+    <button class="memories-fab" onclick="openScrapbook()">
+        <span class="memories-icon">📸</span>
+        <span>A little surprise</span>
+        <span class="memories-sparkle">✨</span>
+    </button>
+
+    <!-- SCRAPBOOK GALLERY -->
+    <div class="scrapbook-overlay" id="scrapbookOverlay">
+
+        <div class="scrapbook-container">
+
+            <button class="scrapbook-close" onclick="closeScrapbook()">
+                ✕
+            </button>
+
+            <div class="scrapbook-heading">
+                <div class="scrapbook-icon">📸</div>
+                <h1>A Little Book of Memories</h1>
+                <p>Some moments deserve to be kept forever ✨</p>
+                <span>A little something, just for my Priyaaaa 🫶🏻🫰🏻</span>
+            </div>
+
+            <div class="polaroid-grid" id="polaroidGrid"></div>
+
+            <p class="scrapbook-footer">
+                Made with a little effort, memories and lots of love ❤️
+            </p>
+
+        </div>
+    </div>
+
+    <!-- FULL-SIZE PHOTO VIEW -->
+    <div class="photo-lightbox" id="photoLightbox" onclick="closePhoto(event)">
+
+        <button class="lightbox-close" onclick="closePhoto(event)">✕</button>
+
+        <img id="lightboxImage" src="" alt="Birthday memory">
+
+        <p id="lightboxCaption"></p>
+
+    </div>
+
+    <div class="photo-lightbox" id="videoLightbox" onclick="closeVideo(event)">
+
+        <button class="lightbox-close" onclick="closeVideo(event)">✕</button>
+
+        <video id="lightboxVideo" controls playsinline style="max-width:90%; max-height:75vh;">
+        </video>
+
+        <p id="videoCaption"></p>
 
     </div>
 
@@ -1071,6 +1581,149 @@ ${giftChoice}
                 .classList.remove('show');
         }
 
+        // =========================
+        // 2026 BIRTHDAY SCRAPBOOK
+        // =========================
+
+        const birthdayMemories = [
+            {
+                type: "image",
+                src: "assets/images/birthday_1_2026.jpeg",
+                caption: "Keep smiling, birthday girl! ✨"
+            },
+            {
+                type: "video",
+                src: "assets/videos/birthday.mov",
+                caption: "A birthday worth remembering 🎥"
+            },
+            {
+                type: "image",
+                src: "assets/images/birthday_2_2026.jpeg",
+                caption: "And then came the little moments ❤️"
+            }
+        ];
+
+        function openScrapbook() {
+
+            const grid = document.getElementById("polaroidGrid");
+            grid.innerHTML = "";
+
+            birthdayMemories.forEach((memory, index) => {
+
+                const card = document.createElement("div");
+                card.className = "polaroid";
+
+                if (memory.type === "image") {
+
+                    const img = document.createElement("img");
+                    img.src = memory.src;
+                    img.alt = `Birthday memory ${index + 1}`;
+                    img.loading = "lazy";
+
+                    card.appendChild(img);
+
+                    card.onclick = () => {
+                        openPhoto(memory.src, memory.caption);
+                    };
+
+                } else if (memory.type === "video") {
+
+                    const videoPreview = document.createElement("div");
+                    videoPreview.className = "video-preview";
+
+                    const video = document.createElement("video");
+                    video.src = memory.src;
+                    video.preload = "metadata";
+                    video.playsInline = true;
+
+                    const playIcon = document.createElement("div");
+                    playIcon.className = "video-play-icon";
+                    playIcon.innerHTML = "▶";
+
+                    videoPreview.appendChild(video);
+                    videoPreview.appendChild(playIcon);
+
+                    card.appendChild(videoPreview);
+
+                    card.onclick = () => {
+                        openVideo(memory.src, memory.caption);
+                    };
+                }
+
+                const caption = document.createElement("div");
+                caption.className = "polaroid-caption";
+                caption.textContent = memory.caption;
+
+                card.appendChild(caption);
+                grid.appendChild(card);
+            });
+
+            document.getElementById("scrapbookOverlay")
+                .classList.add("show");
+
+            document.body.style.overflow = "hidden";
+        }
+        function closeScrapbook() {
+
+            document.getElementById("scrapbookOverlay")
+                .classList.remove("show");
+
+            document.body.style.overflow = "";
+        }
+
+        function openPhoto(image, caption) {
+
+            document.getElementById("lightboxImage").src = image;
+
+            document.getElementById("lightboxCaption")
+                .textContent = caption;
+
+            document.getElementById("photoLightbox")
+                .classList.add("show");
+        }
+
+        function closePhoto(event) {
+
+            if (
+                event.target.id === "photoLightbox" ||
+                event.target.classList.contains("lightbox-close")
+            ) {
+                document.getElementById("photoLightbox")
+                    .classList.remove("show");
+            }
+        }
+
+        function openVideo(src, caption) {
+
+            const video = document.getElementById("lightboxVideo");
+
+            video.src = src;
+
+            document.getElementById("videoCaption")
+                .textContent = caption;
+
+            document.getElementById("videoLightbox")
+                .classList.add("show");
+
+            video.play();
+        }
+
+        function closeVideo(event) {
+
+            if (
+                event.target.id === "videoLightbox" ||
+                event.target.classList.contains("lightbox-close")
+            ) {
+                const video = document.getElementById("lightboxVideo");
+
+                video.pause();
+                video.removeAttribute("src");
+                video.load();
+
+                document.getElementById("videoLightbox")
+                    .classList.remove("show");
+            }
+        }
     </script>
 
     <!-- CUSTOM MODAL -->
